@@ -1,11 +1,8 @@
 
 <div class="row">
-  <EventItem class="col-lg-4 col-md-4 col-sm-6 col-12"></EventItem>
-  <EventItem class="col-lg-4 col-md-4 col-sm-6 col-12"></EventItem>
-  <EventItem class="col-lg-4 col-md-4 col-sm-6 col-12"></EventItem>
-  <EventItem class="col-lg-4 col-md-4 col-sm-6 col-12"></EventItem>
-  <EventItem class="col-lg-4 col-md-4 col-sm-6 col-12"></EventItem>
-  <EventItem class="col-lg-4 col-md-4 col-sm-6 col-12"></EventItem>
-  <EventItem class="col-lg-4 col-md-4 col-sm-6 col-12"></EventItem>
-  <EventItem class="col-lg-4 col-md-4 col-sm-6 col-12"></EventItem>
+  <EventItem *ngFor="let event of visibleEventsList" [myEvent]="event" class="col-lg-4 col-md-4 col-sm-6 col-12"></EventItem>
+</div>
+<h2>Hidden events:</h2>
+<div class="row">
+  <EventItem *ngFor="let event of hiddenEventsList" [myEvent]="event" class="col-lg-4 col-md-4 col-sm-6 col-12"></EventItem>
 </div>

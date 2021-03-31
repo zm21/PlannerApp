@@ -2,11 +2,26 @@
     padding: 10px;
 }
 
+.check{
+  margin-right: 10px;
+  margin-left: 10px;
+  font-size: 32px;
+  color: rgb(62, 197, 152);
+}
 
-@media screen and (min-width: 0px) and (max-width: 400px) {
-    .linkToModal { display: none; }  /* show it on small screens */
-  }
-  
-  @media screen and (min-width: 401px) and (max-width: 992px) {
-    .linkToModal { display: block; }   /* hide it elsewhere */
-  }
+.check:hover{
+  cursor: pointer;
+  color: rgb(95, 175, 148);
+}
+
+.eye{
+  margin-right: 10px;
+  margin-left: 10px;
+  font-size: 32px;
+  color: rgb(62, 109, 197);
+}
+
+.eye:hover{
+  cursor: pointer;
+  color: rgb(95, 123, 175);
+}

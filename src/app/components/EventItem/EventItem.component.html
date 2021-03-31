@@ -1,20 +1,22 @@
-  <link rel="stylesheet" href="EventItem.component.css">
-  <div class="cardCont">
-    <a class="linkToModal" data-toggle="modal" data-target="#exampleModal">
-      <div class="card text-center">
-        <div class="card-header">
-          <img width="100%"
-          src="https://upload.wikimedia.org/wikipedia/commons/thumb/1/14/The_Event_2010_Intertitle.svg/1200px-The_Event_2010_Intertitle.svg.png">
-        </div>
-        <div class="card-body">
-          <h5 class="card-title">This is title</h5>
-        </div>
-        <div class="card-footer text-muted">
-          03/04/2021
-        </div>
-      </div>
-    </a>
+<link rel="stylesheet" href="EventItem.component.css">
+<div class="cardCont">
 
+  <div class="card text-center">
+    <div class="card-header" >
+      <img class="card-img-top" height="200px" width="100%"[src]="myEvent.image">
+    </div>
+    <div class="card-body">
+      <h5 class="card-title">{{myEvent.title}}</h5>
+    </div>
+    <div class="card-footer">
+      <i (click)="changePriority()" *ngIf="myEvent.isPriority ===  false" class="far fa-square check"></i>
+      <i (click)="changePriority()" *ngIf="myEvent.isPriority === true" class="far fa-check-square check"></i>
+      <i (click)="changeIsHidden()" *ngIf="myEvent.isHidden === false" class="fas fa-eye eye"></i>
+      <i (click)="changeIsHidden()" *ngIf="myEvent.isHidden === true" class="fas fa-eye-slash eye"></i>
+    </div>
+    <div class="card-footer text-muted">
+      {{myEvent.date}}
+    </div>
   </div>
 
- 
+</div>  
