@@ -25,3 +25,15 @@
   cursor: pointer;
   color: rgb(95, 123, 175);
 }
+
+.plus{
+  margin-right: 10px;
+  margin-left: 10px;
+  font-size: 32px;
+  color: rgb(143, 62, 197);
+}
+
+.plus:hover{
+  cursor: pointer;
+  color: rgb(143, 95, 175);
+}

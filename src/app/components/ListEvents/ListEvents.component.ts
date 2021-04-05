@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { EventModel } from 'src/app/models/event.model';
+import { PassThrough } from 'stream';
 import { EventsService } from '../core/Events.service';
 
 @Component({
@@ -22,6 +23,7 @@ export class ListEventsComponent implements OnInit {
     this.hiddenEventsList=this.eventsService.getHiddenEvents();
 
     this.eventsService.changeEvents.subscribe(data => {
+      this.eventsList = this.eventsService.getEvents();
       this.visibleEventsList=this.eventsService.getVisibleEvents();
       this.hiddenEventsList=this.eventsService.getHiddenEvents();
     })

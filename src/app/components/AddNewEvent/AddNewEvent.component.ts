@@ -1,5 +1,8 @@
 import { Component, OnInit } from '@angular/core';
-
+import { NgForm } from '@angular/forms';
+import { EventModel } from 'src/app/models/event.model';
+import { PassThrough } from 'stream';
+import { EventsService } from '../core/Events.service';
 @Component({
   selector: 'AddNewEvent',
   templateUrl: './AddNewEvent.component.html',
@@ -7,7 +10,20 @@ import { Component, OnInit } from '@angular/core';
 })
 export class AddNewEventComponent implements OnInit {
 
-  constructor() { }
+  model = new EventModel();
+  errorMessage: string;
+  constructor(private eventsService: EventsService) { }
+
+  onSubmit(form: NgForm){
+    if(this.model.isValid() == true){
+      this.errorMessage = "";
+      this.eventsService.addEnvet(this.model);
+      form.resetForm();
+    }
+    else{
+      this.errorMessage="Enter all fields!";
+    }
+  }
 
   ngOnInit() {
   }

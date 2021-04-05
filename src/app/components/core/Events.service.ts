@@ -1,5 +1,7 @@
+import { not } from '@angular/compiler/src/output/output_ast';
 import { EventEmitter, Injectable } from '@angular/core';
 import { EventModel } from 'src/app/models/event.model';
+import { NoteModel } from 'src/app/models/note.model';
 
 @Injectable({
   providedIn: 'root'
@@ -13,7 +15,15 @@ export class EventsService {
     new EventModel("Study in STEP", "...", "11/05/2021","https://yt3.ggpht.com/ytc/AAUvwniCrLrdm2czf92k8tmlOVNi041tOKc-5MUdNaPzCQ=s900-c-k-c0x00ffffff-no-rj", false),
   ]
 
+  private notes:NoteModel[]=[]
+
   changeEvents = new EventEmitter<boolean>();
+
+
+  addEnvet(model: EventModel) {
+    this.events.push(new EventModel(model.title, model.description, model.date, model.image));
+    this.changeEvents.emit(true);
+  }
 
   getEvents():EventModel[]{
     return this.events;
@@ -44,6 +54,13 @@ export class EventsService {
        return obj.isHidden===true;
      });
    }
+
+  addNote(note: NoteModel):void{
+    this.notes.push(new NoteModel(note.text, note.eventId));
+    this.changeEvents.emit(true);
+    console.log("Add note: ", note);
+    console.log("Notes: ",this.notes)
+  }
 
 constructor() { }
 
