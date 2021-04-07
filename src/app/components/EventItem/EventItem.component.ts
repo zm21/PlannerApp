@@ -37,6 +37,7 @@ export class EventItemComponent implements OnInit {
 
   }
 
+
   model = new NoteModel();
   errorMessage: string;
   isModalVisible: boolean = false;
@@ -47,7 +48,7 @@ export class EventItemComponent implements OnInit {
       this.model.eventId=this.myEvent.id;
       this.eventsService.addNote(this.model);
       form.resetForm();
-      this.isModalVisible = false;
+      // this.isModalVisible = false;
     }
     else{
       this.isModalVisible = true;

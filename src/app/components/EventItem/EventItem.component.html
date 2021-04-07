@@ -3,7 +3,7 @@
 
   <div class="card text-center">
     <div class="card-header" >
-      <img class="card-img-top" height="200px" width="100%"[src]="myEvent.image">
+      <img class="card-img-top" height="225px" width="100%"[src]="myEvent.image">
     </div>
     <div class="card-body">
       <h5 class="card-title">{{myEvent.title}}</h5>
@@ -14,13 +14,18 @@
       <i (click)="changeIsHidden()" *ngIf="myEvent.isHidden === false" class="fas fa-eye eye"></i>
       <i (click)="changeIsHidden()" *ngIf="myEvent.isHidden === true" class="fas fa-eye-slash eye"></i>
       <i (click)="modal()" data-toggle="modal" data-target="#addNoteModal" class="plus fas fa-plus-square"></i>
+      <i [routerLink]="['/editEvent', myEvent.id ]"class="edit far fa-edit"></i>
     </div>
     <div class="card-footer text-muted">
       {{myEvent.date}}
     </div>
+    <button  [routerLink]="['/event', myEvent.id ]"  class="btn-bottom-radis btn btn-info">Details</button>
   </div>
 
+
 </div>  
+
+
 
 
 <div *ngIf="isModalVisible === true" class="modal fade" id="addNoteModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
@@ -42,7 +47,6 @@
           <p class="text-danger">{{errorMessage}}</p>
           <button type="submit" class="btn btn-primary">Submit</button>
         </form>
-        <p class="text-danger">{{errorMessage}}</p>
       </div>
       <div class="modal-footer">
         <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>

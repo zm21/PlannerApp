@@ -1,5 +1,6 @@
 import { not } from '@angular/compiler/src/output/output_ast';
 import { EventEmitter, Injectable } from '@angular/core';
+import { Observable } from 'rxjs';
 import { EventModel } from 'src/app/models/event.model';
 import { NoteModel } from 'src/app/models/note.model';
 
@@ -62,6 +63,24 @@ export class EventsService {
     console.log("Notes: ",this.notes)
   }
 
+  getEventById(id:string):EventModel{
+    return this.events.find(x => x.id == id);
+  }
+
+  updateEvent(model:EventModel):Observable<void>{
+    const index = this.events.findIndex(item => item.id === model.id);
+    this.events[index] = model;
+    console.log('updating event: ', model);
+    this.changeEvents.emit(true);
+    return 
+  }
+
+  getEventNotes(eventId:string):NoteModel[]{
+    return  this.notes.filter( (obj) => {
+      return obj.eventId===eventId;
+    });
+  }
+  
 constructor() { }
 
 }

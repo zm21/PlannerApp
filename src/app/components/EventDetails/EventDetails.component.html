@@ -1,23 +1,50 @@
 <link rel="stylesheet" href="EventDetails.component.css">
-<div class="cardCont">
 
-  <div class="card text-center">
-    <div class="card-header">
-      <img width="100%"
-        src="https://upload.wikimedia.org/wikipedia/commons/thumb/1/14/The_Event_2010_Intertitle.svg/1200px-The_Event_2010_Intertitle.svg.png">
+
+<div class="container">
+  <div class="row">
+
+    <div class="cardCont col-lg-6 col-md-6 col-sm-12 col-12">
+      <div class="card text-center">
+        <div class="card-header">
+          <img class="card-img-top" width="100%" [src]="myEvent.image">
+        </div>
+        <div class="card-body">
+          <h5 class="card-title">{{myEvent.title}}</h5>
+          <p>{{myEvent.description}}</p>
+        </div>
+        <div class="card-footer text-muted">
+          {{myEvent.date}}
+        </div>
+        <div class="card-footer">
+         <div>
+            <i data-toggle="modal" data-target="#addNoteModal" class="plus fas fa-plus-square"> Add note</i>
+         </div> 
+        </div>
+      </div>
     </div>
-    <div class="card-body">
-      <h5 class="card-title">This is title</h5>
-      <p>
-        Lorem ipsum dolor, sit amet consectetur adipisicing elit. Quas expedita voluptas molestias, animi delectus ad
-        corrupti neque accusamus magnam maxime fugiat suscipit! Iste voluptates velit nisi! Impedit quos dolorum
-        adipisci, obcaecati dolorem accusamus dolores incidunt tempore asperiores suscipit quod, corporis aut? Expedita
-        iusto, eligendi ab quasi id eius incidunt nam.
-      </p>
-    </div>
-    <div class="card-footer text-muted">
-      03/04/2021
-    </div>
+
+    <div class="col-lg-6 col-md-6 col-sm-12 col-12">    
+      <form #addNoteForm="ngForm" (ngSubmit)="onSubmit(addNoteForm)">
+        <h2>Add new note to event:</h2>
+        <div class="form-group">
+          <label for="exampleInputEmail1">Note text</label>
+          <input [(ngModel)]="model.text" type="text" class="form-control" id="txtTitle" name="txtTitle"  placeholder="Enter text">
+        </div>
+        <p class="text-danger">{{errorMessage}}</p>
+        <button type="submit" class="btn btn-primary">Submit</button>
+      </form>
+      <h2>Notes: </h2>
+      <div class="row">
+          <div *ngFor="let note of notes" class="cardCont col-lg-12 col-md-12 col-sm-12 col-12">
+            <Note  [note]="note"></Note>
+          </div> 
+      </div>
+    </div> 
+
   </div>
 
 </div>
+
+
+

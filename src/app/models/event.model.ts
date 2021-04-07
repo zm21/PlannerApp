@@ -1,4 +1,3 @@
-import { PassThrough } from 'stream';
 import { v4 as uuidv4 } from 'uuid';
 export class EventModel {
     public id: string;

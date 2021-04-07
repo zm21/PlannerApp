@@ -1,7 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { NgForm } from '@angular/forms';
 import { EventModel } from 'src/app/models/event.model';
-import { PassThrough } from 'stream';
 import { EventsService } from '../core/Events.service';
 @Component({
   selector: 'AddNewEvent',

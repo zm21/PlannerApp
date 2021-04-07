@@ -2,10 +2,15 @@
     padding: 10px;
 }
 
-@media screen and (min-width: 0px) and (max-width: 400px) {
-    .cardCont { display: block; }  /* show it on small screens */
+
+.plus{
+    margin-right: 10px;
+    margin-left: 10px;
+    font-size: 32px;
+    color: rgb(143, 62, 197);
   }
   
-  @media screen and (min-width: 401px) and (max-width: 992px) {
-    .cardCont { display: none; }   /* hide it elsewhere */
-  }
+.plus:hover{
+    cursor: pointer;
+    color: rgb(143, 95, 175);
+}

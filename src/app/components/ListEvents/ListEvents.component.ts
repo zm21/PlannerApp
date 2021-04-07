@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { EventModel } from 'src/app/models/event.model';
-import { PassThrough } from 'stream';
+
 import { EventsService } from '../core/Events.service';
 
 @Component({

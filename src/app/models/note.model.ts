@@ -11,7 +11,7 @@ export class NoteModel {
     }
 
     isValid(): boolean {
-        if (this.text=="") {
+        if (this.text == "") {
             return false
         }
         else {
