@@ -14,3 +14,8 @@
     cursor: pointer;
     color: rgb(143, 95, 175);
 }
+
+.formCont{
+  width: 100%;
+  padding: 10px;
+}

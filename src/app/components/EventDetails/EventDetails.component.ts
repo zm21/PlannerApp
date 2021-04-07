@@ -1,6 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { NgForm } from '@angular/forms';
 import { ActivatedRoute } from '@angular/router';
+import { NotifierService } from 'angular-notifier';
+import { NgxSpinnerService } from 'ngx-spinner';
 import { EventModel } from 'src/app/models/event.model';
 import { NoteModel } from 'src/app/models/note.model';
 import { EventsService } from '../core/Events.service';
@@ -20,19 +22,28 @@ export class EventDetailsComponent implements OnInit {
 
   model = new NoteModel();
 
-  constructor(private route: ActivatedRoute, private eventsService: EventsService) { }
+  constructor(private route: ActivatedRoute, private eventsService: EventsService, private notifierService: NotifierService, private spinner: NgxSpinnerService) { }
 
   errorMessage: string;
 
   onSubmit(form: NgForm){
+    this.spinner.show();
     if(this.model.isValid() == true){
       this.errorMessage = "";
       this.model.eventId=this.myEvent.id;
-      this.eventsService.addNote(this.model);
-      form.resetForm();
+      setTimeout(() => {
+        this.eventsService.addNote(this.model);
+        this.spinner.hide();
+        this.notifierService.notify('success', 'Note was success added!')
+        form.resetForm();
+        this.model = new NoteModel();
+      }, 2500);
     }
     else{
-      this.errorMessage="Enter all fields!";
+      setTimeout(() => {
+        this.spinner.hide();
+        this.notifierService.notify('error', 'Enter all fields!')
+      }, 2500);
     }
   }
 

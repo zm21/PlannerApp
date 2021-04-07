@@ -16,35 +16,37 @@
         <div class="card-footer text-muted">
           {{myEvent.date}}
         </div>
-        <div class="card-footer">
-         <div>
-            <i data-toggle="modal" data-target="#addNoteModal" class="plus fas fa-plus-square"> Add note</i>
-         </div> 
-        </div>
       </div>
     </div>
 
-    <div class="col-lg-6 col-md-6 col-sm-12 col-12">    
-      <form #addNoteForm="ngForm" (ngSubmit)="onSubmit(addNoteForm)">
-        <h2>Add new note to event:</h2>
-        <div class="form-group">
-          <label for="exampleInputEmail1">Note text</label>
-          <input [(ngModel)]="model.text" type="text" class="form-control" id="txtTitle" name="txtTitle"  placeholder="Enter text">
-        </div>
-        <p class="text-danger">{{errorMessage}}</p>
-        <button type="submit" class="btn btn-primary">Submit</button>
-      </form>
+    <div class="col-lg-6 col-md-6 col-sm-12 col-12">
+
       <h2>Notes: </h2>
       <div class="row">
-          <div *ngFor="let note of notes" class="cardCont col-lg-12 col-md-12 col-sm-12 col-12">
-            <Note  [note]="note"></Note>
-          </div> 
+        <div *ngFor="let note of notes" class="cardCont col-lg-12 col-md-12 col-sm-12 col-12">
+          <Note [note]="note"></Note>
+        </div>
       </div>
-    </div> 
+      <div class="row">
+        <form class="formCont" #addNoteForm="ngForm" (ngSubmit)="onSubmit(addNoteForm)">
+          <!-- <div class="form-group">
+            <label for="exampleInputEmail1">Note text</label>
+            <input [(ngModel)]="model.text" type="text" class="form-control" id="txtTitle" name="txtTitle"  placeholder="Enter text">
+          </div>
+          <button type="submit" class="btn btn-primary">Add note</button> -->
+
+          <div class="form-group input-group mb-3">
+            <input [(ngModel)]="model.text" type="text" class="form-control" id="txtTitle" name="txtTitle"
+              placeholder="Enter text">
+            <div class="input-group-append">
+              <button type="submit" class="btn btn-outline-secondary">Add note</button>
+            </div>
+          </div>
+
+        </form>
+      </div>
+    </div>
 
   </div>
 
 </div>
-
-
-
